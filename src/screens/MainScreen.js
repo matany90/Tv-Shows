@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View, Button, Text } from 'react-native';
 import { fetchShows } from '../actions';
-import _ from 'lodash';
+import ShowCard from '../components/ShowCard'
 
 class MainScreen extends Component {
     static navigationOptions = {
@@ -15,16 +15,17 @@ class MainScreen extends Component {
 
     renderShows = () => {
         const { shows, navigation } = this.props;
-        return _.map(shows, show => (
-            <Button 
-            onPress={() => navigation.navigate('Show', {id: show.id})}
-            title="test" />
+        return shows.map(show => (
+            <ShowCard 
+            onPress={() => navigation.navigate('Show', {id: show.id})} 
+            /*image={show.image.medium}*/
+            />
         )) 
     }
 
     render() {
         return (
-            <View>
+            <View style={{flex: 1}}>
                 {this.renderShows()}
             </View>
         );
@@ -32,7 +33,6 @@ class MainScreen extends Component {
 }
 
 const mapStateToProps = ({ shows }) => {
-
     return { shows };
 }
 
