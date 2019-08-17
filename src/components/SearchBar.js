@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
-import { Container, Header, Item, Input, Icon, Button, Text } from 'native-base';
+import { Container, Header, Item, Input, Icon, Button, Text, InputGroup } from 'native-base';
+import CustomBackIcon from './CustomBackIcon';
+import {connect} from 'react-redux';
+import {onSearchIconClick} from '../actions';
 
 class SearchBar extends Component {
     render() {
         return (
             <Item>
-                <Icon name="ios-search" />
+                <CustomBackIcon onPress={() => this.props.onSearchIconClick()} />
                 <Input placeholder="Search" />
                 <Icon name="ios-people" />
             </Item>
@@ -13,4 +16,4 @@ class SearchBar extends Component {
     }
 }
 
-export default SearchBar;
+export default connect(null, {onSearchIconClick})(SearchBar);

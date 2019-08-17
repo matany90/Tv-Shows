@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Container, Header, Left, Body, Right, Button, Icon, Title, Item, Input } from 'native-base';
+import { Container, Header, Left, Body, Right, Button, Icon, Title, Item, Input, View, InputGroup, Text } from 'native-base';
 import { connect } from 'react-redux';
 import SearchBar from './SearchBar';
-import {View} from 'react-native';
 import { onSearchIconClick } from '../actions';
+import CustomBackIcon from './CustomBackIcon';
 
 class CustomHeader extends Component {
 
@@ -37,9 +37,7 @@ class CustomHeader extends Component {
       return null;
     }
     return (
-      <Button transparent onPress={() => onPressBack()}>
-        <Icon name='arrow-back' />
-      </Button>
+      <CustomBackIcon onPress={() => onPressBack()} />
     );
   }
 
