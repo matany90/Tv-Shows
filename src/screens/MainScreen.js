@@ -3,12 +3,10 @@ import { connect } from 'react-redux';
 import { View, Button, Text, FlatList } from 'react-native';
 import { fetchShows } from '../actions';
 import ShowCard from '../components/ShowCard'
+import CustomHeader from '../components/CustomHeader'
 import _ from 'lodash'
 
 class MainScreen extends Component {
-    static navigationOptions = {
-        title: 'Home',
-      }; 
 
     componentDidMount() {
         this.props.fetchShows();  
@@ -21,7 +19,6 @@ class MainScreen extends Component {
             data={shows}
             renderItem={({item, index}) => 
                 <View key={index}>
-                {console.log(item)}
                 <ShowCard 
                 title={item.name}
                 onPress={() => navigation.navigate('Show', {id: index, title: item.name})}
@@ -42,6 +39,7 @@ class MainScreen extends Component {
 }
 
 const mapStateToProps = ({ shows }) => {
+
     return { shows };
 }
 

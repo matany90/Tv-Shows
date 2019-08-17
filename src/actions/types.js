@@ -1,1 +1,2 @@
 export const FETCH_SHOWS = 'FETCH_SHOWS'; 
+export const SEARCH_ICON_CLICKED = 'SEARCH_ICON_CLICKED' 

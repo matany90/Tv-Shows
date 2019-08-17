@@ -37,8 +37,8 @@ const styles = {
     itemStyle: {
         width: (SCREEN_WIDTH / 2) - 10,
         height: 430,
-        marginLeft: 5,
-        marginRight: 5,
+        marginLeft: 2.5,
+        marginRight: 2.5,
         marginBotton: 20
     }
   }

@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
+import CustomHeader from '../components/CustomHeader'
 
 class ShowScreen extends Component {
-    static navigationOptions = ({ navigation, show }) => {
-        return {
-          title: navigation.getParam('title'),
-        };
-      };
 
     render() {
         return (
