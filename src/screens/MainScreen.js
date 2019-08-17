@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, Button, Text } from 'react-native';
+import { View, Button, Text, FlatList } from 'react-native';
 import { fetchShows } from '../actions';
 import ShowCard from '../components/ShowCard'
+import _ from 'lodash'
 
 class MainScreen extends Component {
     static navigationOptions = {
@@ -15,17 +16,25 @@ class MainScreen extends Component {
 
     renderShows = () => {
         const { shows, navigation } = this.props;
-        return shows.map(show => (
-            <ShowCard 
-            onPress={() => navigation.navigate('Show', {id: show.id})} 
-            /*image={show.image.medium}*/
-            />
-        )) 
+        return (
+            <FlatList
+            data={shows}
+            renderItem={({item, index}) => 
+                <View key={index}>
+                {console.log(item)}
+                <ShowCard 
+                title={item.name}
+                onPress={() => navigation.navigate('Show', {id: index, title: item.name})}
+                image={item.image.original} />
+                </View>} 
+                    numColumns={2}
+            /> 
+        );
     }
 
     render() {
         return (
-            <View style={{flex: 1}}>
+            <View style={{flex: 1, justifyContent:'center', alignItems:'center'}}>
                 {this.renderShows()}
             </View>
         );
