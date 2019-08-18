@@ -10,7 +10,7 @@ const SCREEN_WIDTH = SCREEN_IMPORT.get('window').width
 
 
 const ShowScreen = (props) => {
-    const {image, rating, summary, genres, schedule} = props.navigation.getParam('show')
+    const {image, rating, summary, genres, schedule, network, language} = props.navigation.getParam('show')
     console.log(props.navigation.getParam('show'))
     return (
         <ScrollView style={{ width: SCREEN_WIDTH }}>
@@ -50,7 +50,24 @@ const ShowScreen = (props) => {
                 </Separator>
                 <CardItem>
                     <Body style={{ paddingBottom: 20 , justifyContent: 'flex-end', alignItems:'flex-end'}}>
-                    <Text>{schedule.days.map((day) => (day + ", ")) + "at " + schedule.time}</Text>
+                    <Text>Days: {schedule.days.join(", ")}</Text>
+                    <Text>Time: {schedule.time}</Text>
+                    </Body>
+                </CardItem>
+                <Separator bordered>
+                    <Text style={{ fontSize: 15, marginRight: 8 }}>NETWORK</Text>
+                </Separator>
+                <CardItem>
+                    <Body style={{ paddingBottom: 20 , justifyContent: 'flex-end', alignItems:'flex-end'}}>
+                    <Text>{network.name + ", " + network.country.name}</Text>
+                    </Body>
+                </CardItem>
+                <Separator bordered>
+                    <Text style={{ fontSize: 15, marginRight: 8 }}>LANGUAGE</Text>
+                </Separator>
+                <CardItem>
+                    <Body style={{ paddingBottom: 20 , justifyContent: 'flex-end', alignItems:'flex-end'}}>
+                    <Text>{language}</Text>
                     </Body>
                 </CardItem>
             </Card>
