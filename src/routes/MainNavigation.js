@@ -28,6 +28,7 @@ const mainNavigation = createStackNavigator(
     }
   }, {
     initialRouteName: 'Loading',
+    cardStyle: { backgroundColor: '#e8eaf6' },
   }
 );
 

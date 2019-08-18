@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Header, Left, Body, Right, Button, Icon, Title, Item, Input, View, InputGroup, Text } from 'native-base';
+import { StyleProvider, Header, Left, Body, Right, Button, Icon, Title, Item, Input, View, InputGroup, Text } from 'native-base';
 import { connect } from 'react-redux';
 import SearchBar from './SearchBar';
 import { onSearchIconClick } from '../actions';
