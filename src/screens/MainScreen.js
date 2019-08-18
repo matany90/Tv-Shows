@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View, Button, Text, FlatList } from 'react-native';
-import { fetchShows } from '../actions';
-import ShowCard from '../components/ShowCard'
+import { fetchShows, onSearchIconClick } from '../actions';
+import CustomCard from '../components/CustomCard'
 import CustomHeader from '../components/CustomHeader'
+import {Content, List, ListItem} from 'native-base';
 import _ from 'lodash'
 
 class MainScreen extends Component {
@@ -13,18 +14,26 @@ class MainScreen extends Component {
     }
 
     renderShows = () => {
-        const { shows, navigation } = this.props;
+        const { filterShows, navigation, showSearchBar } = this.props;
         return (
             <FlatList
-            data={shows}
+            data={filterShows}
             renderItem={({item, index}) => 
-                <View key={index}>
-                <ShowCard 
+                <View key={item.id}>
+                <CustomCard 
                 title={item.name}
-                onPress={() => navigation.navigate('Show', {id: index, title: item.name})}
-                image={item.image.original} />
-                </View>} 
-                    numColumns={2}
+                image={item.image.original}
+                rating={item.rating.average}
+                onPress={() => {
+                    navigation.navigate('Show', { show: item, title: item.name })
+                    if (showSearchBar) {
+                        this.props.onSearchIconClick()
+                    }
+                }}
+                />
+                </View>
+                } 
+                numColumns={2}
             /> 
         );
     }
@@ -38,10 +47,17 @@ class MainScreen extends Component {
     }
 }
 
-const mapStateToProps = ({ shows }) => {
+const mapStateToProps = ({ shows, header }) => {
+    const { searchBarText, showSearchBar } = header;
+    let filterShows = [];
+    shows.map(show => {
+        if (show.name.toLowerCase().includes(searchBarText.toLowerCase()) || searchBarText === '') {
+            filterShows.push(show)
+        }
+    })
 
-    return { shows };
+    return { filterShows, showSearchBar };
 }
 
 
-export default connect(mapStateToProps, { fetchShows })(MainScreen);
+export default connect(mapStateToProps, { fetchShows, onSearchIconClick })(MainScreen);

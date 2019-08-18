@@ -7,39 +7,41 @@ import SCREEN_IMPORT from 'Dimensions'
 const SCREEN_WIDTH = SCREEN_IMPORT.get('window').width
 
 
-const ShowCard = (props) => (
-    <TouchableOpacity onPress={props.onPress} style={styles.itemStyle}>
-          <Card style={{height: 420}}>
+const ShowCard = (props) => {
+  const {onPress, image, title, rating} = props;
+    return (
+      <TouchableOpacity onPress={onPress} style={styles.itemStyle}>
+          <Card style={{height: 450}}>
             <CardItem cardBody>
-              <Image source={{uri: props.image}} 
+              <Image source={{uri: image}} 
               style={{  resizeMode: 'cover', height: 300, flex: 1 }} />
             </CardItem>
             <CardItem>
                 <Body>
-                  <Text>{props.title}</Text>
-                  {/*<Text note>GeekyAnts</Text>*/}
+                  <Text 
+                  style={{textAlign: 'center', alignSelf: 'center', fontSize: 15}}>{title}</Text>
                 </Body>
             </CardItem>
             <CardItem>
-              <Body>
-              <Rating
-            imageSize={20}
-            readonly
-             startingValue={"{3.3}"}
-                />
+              <Body style={{ flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
+                <Text note style={{textAlign: 'center', alignSelf: 'center', marginBottom: 10}}>
+                {`Average rating: ${rating}`}
+                </Text>
+              <Rating type='star' startingValue={rating / 2} readonly imageSize={28} />
               </Body>
             </CardItem>
           </Card>
-    </TouchableOpacity>     
-) 
+    </TouchableOpacity>
+    );     
+} 
 
 const styles = {
     itemStyle: {
         width: (SCREEN_WIDTH / 2) - 10,
-        height: 430,
+        height: 460,
         marginLeft: 2.5,
         marginRight: 2.5,
-        marginBotton: 20
+        marginBottom: 5
     }
   }
 

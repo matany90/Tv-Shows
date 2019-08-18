@@ -6,3 +6,4 @@ export const fetchShows = () => async dispatch => {
 
     dispatch({ type: FETCH_SHOWS, payload: shows.data });
 }
+

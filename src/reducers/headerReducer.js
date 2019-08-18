@@ -1,11 +1,12 @@
-import { SEARCH_ICON_CLICKED } from '../actions/types';
+import { SEARCH_ICON_CLICKED, SEARCH_BAR_TEXT_CHANGED } from '../actions/types';
 
-const INITIAL_STATE = { showSearchBar: false }
+const INITIAL_STATE = { showSearchBar: false, searchBarText: '' }
 export default (state = INITIAL_STATE, action) => {
-    console.log('test')
     switch(action.type) {
         case SEARCH_ICON_CLICKED:
             return {...state, showSearchBar: !state.showSearchBar }; 
+        case SEARCH_BAR_TEXT_CHANGED:
+            return {...state, searchBarText: action.payload}    
         default:
          return state;
     }
