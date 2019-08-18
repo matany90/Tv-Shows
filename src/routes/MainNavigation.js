@@ -4,9 +4,16 @@ import MainScreen from '../screens/MainScreen';
 import ShowScreen from '../screens/ShowScreen';
 import CustomHeader from '../components/CustomHeader'
 import {Text, View} from 'react-native';
+import LoadingScreen from '../screens/LoadingScreen';
 
 const mainNavigation = createStackNavigator(
   {
+    Loading: {
+      screen: LoadingScreen,
+      navigationOptions: {
+        header: null
+      }
+    },
     Main: {
       screen: MainScreen,
       navigationOptions: {
@@ -20,7 +27,7 @@ const mainNavigation = createStackNavigator(
       }),
     }
   }, {
-    initialRouteName: 'Main',
+    initialRouteName: 'Loading',
   }
 );
 

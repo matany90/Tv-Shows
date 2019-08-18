@@ -8,11 +8,6 @@ import {Content, List, ListItem} from 'native-base';
 import _ from 'lodash'
 
 class MainScreen extends Component {
-
-    componentDidMount() {
-        this.props.fetchShows();  
-    }
-
     renderShows = () => {
         const { filterShows, navigation, showSearchBar } = this.props;
         return (

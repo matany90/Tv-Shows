@@ -10,8 +10,8 @@ const SCREEN_WIDTH = SCREEN_IMPORT.get('window').width
 
 
 const ShowScreen = (props) => {
-    const {image, rating, summary, genres, schedule, network, language} = props.navigation.getParam('show')
-    console.log(props.navigation.getParam('show'))
+    const { image, rating, summary, genres, schedule, network, language } = props.navigation.getParam('show')
+
     return (
         <ScrollView style={{ width: SCREEN_WIDTH }}>
             <Card style={{ flex: 0 }}>
@@ -31,7 +31,7 @@ const ShowScreen = (props) => {
                     <Text style={{ fontSize: 15, marginRight: 8 }}>SUMMARY</Text>
                 </Separator>
                 <CardItem>
-                    <Body style={{ paddingBottom: 20 }}>
+                    <Body style={{ paddingBottom: 10 }}>
                         <Text>
                             {deleteHTMLTags(summary)}
                         </Text>
@@ -41,33 +41,33 @@ const ShowScreen = (props) => {
                     <Text style={{ fontSize: 15, marginRight: 8 }}>GENRES</Text>
                 </Separator>
                 <CardItem>
-                    <Body style={{ paddingBottom: 20 , justifyContent: 'flex-end', alignItems:'flex-end'}}>
-                    {genres.map(genre => <View key={genre}><Text>{genre}</Text></View>)}
+                    <Body style={{ paddingBottom: 10, justifyContent: 'flex-end', alignItems: 'flex-end' }}>
+                        {genres.map(genre => <View key={genre}><Text>{genre}</Text></View>)}
                     </Body>
                 </CardItem>
                 <Separator bordered>
                     <Text style={{ fontSize: 15, marginRight: 8 }}>SCHEDULE</Text>
                 </Separator>
                 <CardItem>
-                    <Body style={{ paddingBottom: 20 , justifyContent: 'flex-end', alignItems:'flex-end'}}>
-                    <Text>Days: {schedule.days.join(", ")}</Text>
-                    <Text>Time: {schedule.time}</Text>
+                    <Body style={{ paddingBottom: 10, justifyContent: 'flex-end', alignItems: 'flex-end' }}>
+                        <Text>Days: {schedule.days.join(", ")}</Text>
+                        <Text>Time: {schedule.time}</Text>
                     </Body>
                 </CardItem>
                 <Separator bordered>
                     <Text style={{ fontSize: 15, marginRight: 8 }}>NETWORK</Text>
                 </Separator>
                 <CardItem>
-                    <Body style={{ paddingBottom: 20 , justifyContent: 'flex-end', alignItems:'flex-end'}}>
-                    <Text>{network.name + ", " + network.country.name}</Text>
+                    <Body style={{ paddingBottom: 10, justifyContent: 'flex-end', alignItems: 'flex-end' }}>
+                        <Text>{network.name + ", " + network.country.name}</Text>
                     </Body>
                 </CardItem>
                 <Separator bordered>
                     <Text style={{ fontSize: 15, marginRight: 8 }}>LANGUAGE</Text>
                 </Separator>
                 <CardItem>
-                    <Body style={{ paddingBottom: 20 , justifyContent: 'flex-end', alignItems:'flex-end'}}>
-                    <Text>{language}</Text>
+                    <Body style={{ paddingBottom: 10, justifyContent: 'flex-end', alignItems: 'flex-end' }}>
+                        <Text>{language}</Text>
                     </Body>
                 </CardItem>
             </Card>
