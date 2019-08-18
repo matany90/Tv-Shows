@@ -3,6 +3,7 @@ import { View, Image, TouchableOpacity } from 'react-native'
 import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right } from 'native-base';
 import { Rating, AirbnbRating } from 'react-native-elements';
 import SCREEN_IMPORT from 'Dimensions'
+import RatingStarts from './RatingStarts';
   
 const SCREEN_WIDTH = SCREEN_IMPORT.get('window').width
 
@@ -23,12 +24,11 @@ const ShowCard = (props) => {
                 </Body>
             </CardItem>
             <CardItem>
-              <Body style={{ flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
-                <Text note style={{textAlign: 'center', alignSelf: 'center', marginBottom: 10}}>
-                {`Average rating: ${rating}`}
-                </Text>
-              <Rating type='star' startingValue={rating / 2} readonly imageSize={28} />
-              </Body>
+              <RatingStarts
+              rating={rating}
+              numberOfStarts={rating / 2}
+              startSize={28}
+              />
             </CardItem>
           </Card>
     </TouchableOpacity>
