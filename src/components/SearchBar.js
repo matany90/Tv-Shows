@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Container, Header, Item, Input, Icon, Button, Text, InputGroup } from 'native-base';
+import { Item, Input, Icon } from 'native-base';
 import CustomBackIcon from './CustomBackIcon';
 import { connect } from 'react-redux';
 import { onSearchIconClick, onSearchBarTextChange, fetchFilterShows } from '../actions';
@@ -30,4 +30,5 @@ const mapStateToProps = ({ header }) => {
     return { searchBarText };
 }
 
-export default connect(mapStateToProps, { onSearchIconClick, onSearchBarTextChange, fetchFilterShows })(SearchBar);
+export default connect(mapStateToProps, { onSearchIconClick,
+     onSearchBarTextChange, fetchFilterShows })(SearchBar);

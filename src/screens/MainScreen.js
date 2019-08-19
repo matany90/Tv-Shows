@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View, Button, Text, FlatList, StyleSheet } from 'react-native';
-import { fetchShows, onSearchIconClick, initPageNumber/*, toggleIsFetching, clearData*/ } from '../actions';
+import { fetchShows, onSearchIconClick, initPageNumber } from '../actions';
 import { Content, List, ListItem } from 'native-base';
+import {HttpsStringFormat} from '../Utils';
 import _ from 'lodash'
 
 import CustomCard from '../components/CustomCard'
@@ -16,20 +17,12 @@ class MainScreen extends Component {
             data={dataToShow}
             onEndReached={() => this.props.fetchShows()}
             numColumns={2}
-            onEndThreshold={0}
+            onEndThreshold={200}
             renderItem={({item, index}) => this.renderShowItem(item)} 
-            /*refreshing={isFetching}
-            onRefresh={() => this.onRefresh()}*/
+
             /> 
         );
     }
-
-    /*onRefresh = () => {
-        this.props.toggleIsFetching(true);
-        this.props.initPageNumber();
-        this.props.clearData();
-        this.props.fetchShows();
-    } */
 
     renderShowItem = (item) => {
         const { navigation, showSearchBar } = this.props;
@@ -38,7 +31,7 @@ class MainScreen extends Component {
             <View key={id}>
             <CustomCard 
             title={name || "No Name"}
-            image={image !== null ? image.original : 'noImage'}
+            image={image !== null ? HttpsStringFormat(image.original) : 'noImage'}
             rating={rating.average}
             onPress={() => {
                 navigation.navigate('Show', { show: item, title: name })
@@ -78,4 +71,4 @@ const mapStateToProps = ({ shows, header }) => {
 }
 
 
-export default connect(mapStateToProps, { fetchShows, onSearchIconClick, initPageNumber,/* toggleIsFetching, clearData*/ })(MainScreen);
+export default connect(mapStateToProps, { fetchShows, onSearchIconClick, initPageNumber })(MainScreen);

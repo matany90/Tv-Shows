@@ -1,16 +1,28 @@
 import React from 'react';
-import { Rating, AirbnbRating } from 'react-native-elements';
-import {Body, Text, View} from 'native-base';
+import { StyleSheet } from 'react-native'
+import { Rating } from 'react-native-elements';
+import { Body, Text, View } from 'native-base';
 
 
-const RatingStarts = (props) => (
-    <Body style={{ justifyContent:'center', alignItems:'center'}}>
-    <Text note style={{ textAlign: 'center', alignSelf: 'center',alignItems:'center', marginBottom: 10, fontSize: props.textSize || null}}>
-    {`Average rating:\n ${props.rating}`}
+const RatingStarts = ({ startSize, numberOfStarts, rating, textSize }) => (
+    <View style={styles.container}>
+    <Text note style={[styles.textStyle, { fontSize: textSize || null }]}>
+    {`Average rating:\n ${rating}`}
     </Text>
     <Rating type='star'
-     startingValue={props.numberOfStarts} readonly imageSize={props.startSize} />
-    </Body>
+     startingValue={numberOfStarts} readonly imageSize={startSize} />
+    </View>
 )
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+    },
+    textStyle: {
+        textAlign: 'center', 
+        marginBottom: 10,
+    },
+});
 
 export default RatingStarts

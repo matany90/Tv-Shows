@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = ({ shows }) => {
     const { showsArray } = shows;
+    
     return { showsArray }
 }
 

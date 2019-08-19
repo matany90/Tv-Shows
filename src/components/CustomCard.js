@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, TouchableOpacity } from 'react-native'
+import { Image, TouchableOpacity, StyleSheet } from 'react-native'
 import { Card, CardItem, Text, Body } from 'native-base';
 import SCREEN_IMPORT from 'Dimensions'
 
@@ -7,9 +7,7 @@ import RatingStarts from './RatingStarts';
 
 const SCREEN_WIDTH = SCREEN_IMPORT.get('window').width
 
-const ShowCard = (props) => {
-  const {onPress, image, title, rating} = props;
-    return (
+const ShowCard = ({ onPress, image, title, rating }) => (
       <TouchableOpacity onPress={onPress} style={styles.itemStyle}>
           <Card style={styles.card}>
             <CardItem cardBody>
@@ -29,9 +27,8 @@ const ShowCard = (props) => {
           </Card>
     </TouchableOpacity>
     );     
-} 
-
-const styles = {
+ 
+const styles = StyleSheet.create({
     itemStyle: {
         width: (SCREEN_WIDTH / 2) - 10,
         height: 460,
@@ -52,6 +49,6 @@ const styles = {
       alignSelf: 'center',
       fontSize: 15
     }
-  }
+  })
 
 export default ShowCard;
