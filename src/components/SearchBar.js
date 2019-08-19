@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Container, Header, Item, Input, Icon, Button, Text, InputGroup } from 'native-base';
 import CustomBackIcon from './CustomBackIcon';
 import { connect } from 'react-redux';
-import { onSearchIconClick, onSearchBarTextChange } from '../actions';
+import { onSearchIconClick, onSearchBarTextChange, fetchFilterShows } from '../actions';
 
 class SearchBar extends Component {
     render() {
@@ -13,7 +13,10 @@ class SearchBar extends Component {
                 <Input 
                 placeholder="Search"
                 value={searchBarText}
-                onChangeText={text => this.props.onSearchBarTextChange(text)}
+                onChangeText={text => {
+                    this.props.onSearchBarTextChange(text)
+                    this.props.fetchFilterShows(text)
+                }}
                  />
                 <Icon name="ios-search" />
             </Item>
@@ -27,4 +30,4 @@ const mapStateToProps = ({ header }) => {
     return { searchBarText };
 }
 
-export default connect(mapStateToProps, { onSearchIconClick, onSearchBarTextChange })(SearchBar);
+export default connect(mapStateToProps, { onSearchIconClick, onSearchBarTextChange, fetchFilterShows })(SearchBar);

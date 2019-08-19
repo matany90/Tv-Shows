@@ -6,7 +6,7 @@ import _ from 'lodash';
 
 class LoadingScreen extends Component {
     componentDidMount() {
-        this.props.fetchShows(0);  
+        this.props.fetchShows();  
     }
 
     render() {
@@ -18,7 +18,7 @@ class LoadingScreen extends Component {
                 </View>
             ); 
         }
-        return navigation.navigate('Main')
+        return navigation.navigate('App')
     }
 }
 

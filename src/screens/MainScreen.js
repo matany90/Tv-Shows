@@ -1,66 +1,74 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, Button, Text, FlatList } from 'react-native';
-import { fetchShows, onSearchIconClick, increasePageNumber } from '../actions';
-import CustomCard from '../components/CustomCard'
-import CustomHeader from '../components/CustomHeader'
-import {Content, List, ListItem} from 'native-base';
+import { View, Button, Text, FlatList, StyleSheet } from 'react-native';
+import { fetchShows, onSearchIconClick, initPageNumber } from '../actions';
+import { Content, List, ListItem } from 'native-base';
 import _ from 'lodash'
 
-class MainScreen extends Component {
+import CustomCard from '../components/CustomCard'
+import CustomHeader from '../components/CustomHeader'
 
+class MainScreen extends Component {
     renderShows = () => {
-        const { showsArray, navigation, showSearchBar, page } = this.props;
+        const { dataToShow, navigation, showSearchBar } = this.props;
         return (
             <FlatList
-            data={showsArray}
-            onEndReached={() => {
-                this.props.fetchShows(page)
-            }}
+            data={dataToShow}
+            onEndReached={() => this.props.fetchShows()}
+            numColumns={2}
             onEndThreshold={0}
-            renderItem={({item, index}) => 
-                <View key={item.id}>
-                <CustomCard 
-                title={item.name}
-                image={item.image.original}
-                rating={item.rating.average}
-                onPress={() => {
-                    navigation.navigate('Show', { show: item, title: item.name })
-                    if (showSearchBar) {
-                        this.props.onSearchIconClick()
-                    }
-                }}
-                />
-                </View>
-                } 
-                numColumns={2}
+            renderItem={({item, index}) => this.renderShowItem(item)} 
             /> 
         );
     }
 
+    renderShowItem = (item) => {
+        const { navigation, showSearchBar } = this.props;
+        const { name, image, rating, id } = item;
+        return (
+            <View key={id}>
+            <CustomCard 
+            title={name || "No Name"}
+            image={image !== null ? image.original : 'noImage'}
+            rating={rating.average}
+            onPress={() => {
+                navigation.navigate('Show', { show: item, title: name })
+                if (showSearchBar) {
+                    this.props.onSearchIconClick()
+                }
+            }}
+            />
+            </View>
+            );
+        }
+
     render() {
         return (
-            <View style={{flex: 1, justifyContent:'center', alignItems:'center'}}>
+            <View style={styles.showsListContainer}>
                 {this.renderShows()}
             </View>
         );
     }
 }
 
+
+const styles = StyleSheet.create({
+    showsListContainer: {
+        flex: 1, 
+        justifyContent:'center', 
+        alignItems:'center'
+    }
+})
+
 const mapStateToProps = ({ shows, header }) => {
     const { searchBarText, showSearchBar } = header;
-    let { showsArray, page } = shows;
-    /*showsArray = _.filter(showsArray, show => (show.name.toLowerCase().includes(searchBarText.toLowerCase()) || searchBarText === ''))*/
-    /*let filterShows = [];
-    showsArray.map(show => {
-        if (show.name.toLowerCase().includes(searchBarText.toLowerCase()) || searchBarText === '') {
-            filterShows.push(show)
-        }
-    }) */
-    //console.log(filterShows)
+    const { showsArray, page, filterShows } = shows;
     console.log(showsArray)
-    return { showsArray, showSearchBar, page };
+    console.log(filterShows)
+
+    const dataToShow = searchBarText === '' ? showsArray : filterShows
+    return { dataToShow, showSearchBar, page, searchBarText };
 }
 
 
-export default connect(mapStateToProps, { fetchShows, onSearchIconClick, increasePageNumber })(MainScreen);
+export default connect(mapStateToProps, { fetchShows, onSearchIconClick, initPageNumber })(MainScreen);
