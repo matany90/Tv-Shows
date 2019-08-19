@@ -137,12 +137,10 @@ android {
     //added by me
         signingConfigs {
         release {
-            if (project.hasProperty('MYAPP_UPLOAD_STORE_FILE')) {
-                storeFile file(MYAPP_UPLOAD_STORE_FILE)
-                storePassword MYAPP_UPLOAD_STORE_PASSWORD
-                keyAlias MYAPP_UPLOAD_KEY_ALIAS
-                keyPassword MYAPP_UPLOAD_KEY_PASSWORD
-            }
+        storeFile file(MYAPP_RELEASE_STORE_FILE)
+        storePassword MYAPP_RELEASE_STORE_PASSWORD
+        keyAlias MYAPP_RELEASE_KEY_ALIAS
+        keyPassword MYAPP_RELEASE_KEY_PASSWORD
         }
     }
     //added by me
@@ -203,17 +201,6 @@ android {
 }
 
 dependencies {
-    /* Added by me to Loading gif on android*/
-    compile 'com.facebook.fresco:fresco:1.+'
-
-    // For animated GIF support
-    compile 'com.facebook.fresco:animated-gif:1.+'
-
-    // For WebP support, including animated WebP
-    compile 'com.facebook.fresco:animated-webp:1.+'
-    compile 'com.facebook.fresco:webpsupport:1.+'
-    /* Added by me to Loading gif on android*/
-
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:+"  // From node_modules
 

@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View, Button, Text, FlatList } from 'react-native';
-import { fetchShows, onSearchIconClick } from '../actions';
+import { fetchShows, onSearchIconClick, increasePageNumber } from '../actions';
 import CustomCard from '../components/CustomCard'
 import CustomHeader from '../components/CustomHeader'
 import {Content, List, ListItem} from 'native-base';
 import _ from 'lodash'
 
 class MainScreen extends Component {
+
     renderShows = () => {
-        const { filterShows, navigation, showSearchBar } = this.props;
+        const { showsArray, navigation, showSearchBar, page } = this.props;
         return (
             <FlatList
-            data={filterShows}
+            data={showsArray}
+            onEndReached={() => {
+                this.props.fetchShows(page)
+            }}
+            onEndThreshold={0}
             renderItem={({item, index}) => 
                 <View key={item.id}>
                 <CustomCard 
@@ -44,15 +49,18 @@ class MainScreen extends Component {
 
 const mapStateToProps = ({ shows, header }) => {
     const { searchBarText, showSearchBar } = header;
-    let filterShows = [];
-    shows.map(show => {
+    let { showsArray, page } = shows;
+    /*showsArray = _.filter(showsArray, show => (show.name.toLowerCase().includes(searchBarText.toLowerCase()) || searchBarText === ''))*/
+    /*let filterShows = [];
+    showsArray.map(show => {
         if (show.name.toLowerCase().includes(searchBarText.toLowerCase()) || searchBarText === '') {
             filterShows.push(show)
         }
-    })
-
-    return { filterShows, showSearchBar };
+    }) */
+    //console.log(filterShows)
+    console.log(showsArray)
+    return { showsArray, showSearchBar, page };
 }
 
 
-export default connect(mapStateToProps, { fetchShows, onSearchIconClick })(MainScreen);
+export default connect(mapStateToProps, { fetchShows, onSearchIconClick, increasePageNumber })(MainScreen);

@@ -6,12 +6,12 @@ import _ from 'lodash';
 
 class LoadingScreen extends Component {
     componentDidMount() {
-        this.props.fetchShows();  
+        this.props.fetchShows(0);  
     }
 
     render() {
-        const { shows, navigation } = this.props;
-        if (_.isEmpty(shows)) {
+        const { showsArray, navigation } = this.props;
+        if (_.isEmpty(showsArray)) {
             return(
                 <View style={[styles.container, styles.horizontal]}>
                 <ActivityIndicator size="large" color="#0000ff" />
@@ -35,7 +35,8 @@ const styles = StyleSheet.create({
   })
 
 const mapStateToProps = ({ shows }) => {
-    return { shows }
+    const { showsArray } = shows;
+    return { showsArray }
 }
 
 export default connect(mapStateToProps, { fetchShows })(LoadingScreen);
