@@ -70,6 +70,7 @@ const mapStateToProps = ({ data, header }) => {
     const { allShows, page, filterShows } = data;
 
     const dataToShow = searchBarText === '' ? allShows : filterShows
+    console.log(allShows)
     return { dataToShow, showSearchBar, page, searchBarText };
 }
 

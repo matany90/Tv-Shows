@@ -4,8 +4,8 @@ import { Rating } from 'react-native-elements';
 import { Body, Text, View } from 'native-base';
 
 
-const RatingStarts = ({ startSize, numberOfStarts, rating, textSize }) => (
-    <View style={styles.container}>
+const RatingStarts = ({ startSize, numberOfStarts, rating, textSize, style }) => (
+    <View style={[styles.container, style]}>
     <Text note style={[styles.textStyle, { fontSize: textSize || null }]}>
     {`Average rating:\n ${rating}`}
     </Text>
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     },
     textStyle: {
         textAlign: 'center', 
-        marginBottom: 10,
+        marginBottom: 3,
     },
 });
 

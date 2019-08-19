@@ -26,7 +26,8 @@ class LoadingScreen extends Component {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      justifyContent: 'center'
+      justifyContent: 'center',
+      backgroundColor: '#e8eaf6'
     },
     horizontal: {
       flexDirection: 'row',

@@ -1,6 +1,5 @@
 import { FETCH_SHOWS, FETCH_FILTER_SHOWS, INIT_PAGE_NUMBER } from './types';
 import axios from 'axios';
-import _ from 'lodash'
 
 let PAGE = 0
 

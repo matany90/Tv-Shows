@@ -23,6 +23,7 @@ const ShowCard = ({ onPress, image, title, rating }) => (
               rating={rating || "No rating avaliable"}
               numberOfStarts={rating / 2}
               startSize={28}
+              style={{paddingBottom: 25}}
               />
           </Card>
     </TouchableOpacity>
@@ -32,12 +33,25 @@ const styles = StyleSheet.create({
     itemStyle: {
         width: (SCREEN_WIDTH / 2) - 10,
         height: 460,
-        marginLeft: 2.5,
-        marginRight: 2.5,
+        marginLeft: 1,
+        marginRight: 1,
         marginBottom: 5
     },
     card: {
       height: 450,
+      borderRadius: 20,
+      borderWidth: 1,
+      borderRadius: 20,
+      borderColor: '#ddd',
+      borderBottomWidth: 0,
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.8,
+      shadowRadius: 2,
+      elevation: 1,
+      marginLeft: 5,
+      marginRight: 5,
+      marginTop: 10,
     },
     image: {
       resizeMode: 'cover', 
@@ -47,7 +61,8 @@ const styles = StyleSheet.create({
     title: {
       textAlign: 'center', 
       alignSelf: 'center',
-      fontSize: 15
+      fontSize: 16,
+      marginBottom: 5
     }
   })
 

@@ -15,6 +15,9 @@ const AppFlow = createStackNavigator(
       }),
     }
   },
+  {
+    cardStyle: { backgroundColor: '#e8eaf6' },
+  }
 );
 
 const MainStack = createSwitchNavigator(
@@ -24,7 +27,6 @@ const MainStack = createSwitchNavigator(
   }, 
   {
     initialRouteName: 'Loading',
-    cardStyle: { backgroundColor: '#e8eaf6' },
   }
 )
 
