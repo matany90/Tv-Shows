@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View, Button, Text, FlatList, StyleSheet } from 'react-native';
-import { fetchShows, onSearchIconClick, initPageNumber } from '../actions';
+import { fetchShows, onSearchIconClick, initPageNumber/*, toggleIsFetching, clearData*/ } from '../actions';
 import { Content, List, ListItem } from 'native-base';
 import _ from 'lodash'
 
@@ -18,9 +18,18 @@ class MainScreen extends Component {
             numColumns={2}
             onEndThreshold={0}
             renderItem={({item, index}) => this.renderShowItem(item)} 
+            /*refreshing={isFetching}
+            onRefresh={() => this.onRefresh()}*/
             /> 
         );
     }
+
+    /*onRefresh = () => {
+        this.props.toggleIsFetching(true);
+        this.props.initPageNumber();
+        this.props.clearData();
+        this.props.fetchShows();
+    } */
 
     renderShowItem = (item) => {
         const { navigation, showSearchBar } = this.props;
@@ -63,12 +72,10 @@ const styles = StyleSheet.create({
 const mapStateToProps = ({ shows, header }) => {
     const { searchBarText, showSearchBar } = header;
     const { showsArray, page, filterShows } = shows;
-    console.log(showsArray)
-    console.log(filterShows)
 
     const dataToShow = searchBarText === '' ? showsArray : filterShows
     return { dataToShow, showSearchBar, page, searchBarText };
 }
 
 
-export default connect(mapStateToProps, { fetchShows, onSearchIconClick, initPageNumber })(MainScreen);
+export default connect(mapStateToProps, { fetchShows, onSearchIconClick, initPageNumber,/* toggleIsFetching, clearData*/ })(MainScreen);

@@ -1,4 +1,4 @@
-import { FETCH_SHOWS, FETCH_FILTER_SHOWS, INIT_PAGE_NUMBER } from './types';
+import { FETCH_SHOWS, FETCH_FILTER_SHOWS, INIT_PAGE_NUMBER,/*TOGGLE_IS_FETCHING, CLEAR_DATA*/ } from './types';
 import axios from 'axios';
 
 let PAGE = 0
@@ -21,3 +21,11 @@ export const initPageNumber = () => {
     PAGE = 0;
     return {type: INIT_PAGE_NUMBER };
 } 
+
+/*export const toggleIsFetching = (bool) => {
+    return { type: TOGGLE_IS_FETCHING, payload: bool }
+}
+
+export const clearData = () => {
+    return { type: CLEAR_DATA }
+} */

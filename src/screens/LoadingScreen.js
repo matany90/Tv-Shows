@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { View, ActivityIndicator, StyleSheet } from 'react-native';
-import { fetchShows } from '../actions'
+import { fetchShows, initPageNumber } from '../actions'
 import _ from 'lodash';
 
 class LoadingScreen extends Component {
     componentDidMount() {
+        this.props.initPageNumber();
         this.props.fetchShows();  
     }
 
@@ -39,4 +40,4 @@ const mapStateToProps = ({ shows }) => {
     return { showsArray }
 }
 
-export default connect(mapStateToProps, { fetchShows })(LoadingScreen);
+export default connect(mapStateToProps, { fetchShows, initPageNumber })(LoadingScreen);
