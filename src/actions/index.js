@@ -1,2 +1,2 @@
-export * from './showActions';
+export * from './dataActions';
 export * from './headerActions';

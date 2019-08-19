@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View, Button, Text, FlatList, StyleSheet } from 'react-native';
-import { fetchShows, onSearchIconClick, initPageNumber } from '../actions';
+import { fetchAllShows, onSearchIconClick, initPageNumber } from '../actions';
 import { Content, List, ListItem } from 'native-base';
 import {HttpsStringFormat} from '../Utils';
 import _ from 'lodash'
@@ -15,17 +15,25 @@ class MainScreen extends Component {
         return (
             <FlatList
             data={dataToShow}
-            onEndReached={() => this.props.fetchShows()}
+            onEndReached={() => this.props.fetchAllShows()}
             numColumns={2}
             onEndThreshold={200}
             renderItem={({item, index}) => this.renderShowItem(item)} 
-
             /> 
         );
     }
+    
+    onCardClick = (item) => {
+        const { navigation, showSearchBar } = this.props;
+        const { name } = item
+
+        navigation.navigate('Show', { show: item, title: name })
+        if (showSearchBar) {
+            this.props.onSearchIconClick()
+        }
+    }
 
     renderShowItem = (item) => {
-        const { navigation, showSearchBar } = this.props;
         const { name, image, rating, id } = item;
         return (
             <View key={id}>
@@ -33,12 +41,7 @@ class MainScreen extends Component {
             title={name || "No Name"}
             image={image !== null ? HttpsStringFormat(image.original) : 'noImage'}
             rating={rating.average}
-            onPress={() => {
-                navigation.navigate('Show', { show: item, title: name })
-                if (showSearchBar) {
-                    this.props.onSearchIconClick()
-                }
-            }}
+            onPress={() => this.onCardClick(item)}
             />
             </View>
             );
@@ -62,13 +65,14 @@ const styles = StyleSheet.create({
     }
 })
 
-const mapStateToProps = ({ shows, header }) => {
+const mapStateToProps = ({ data, header }) => {
     const { searchBarText, showSearchBar } = header;
-    const { showsArray, page, filterShows } = shows;
+    const { allShows, page, filterShows } = data;
 
-    const dataToShow = searchBarText === '' ? showsArray : filterShows
+    const dataToShow = searchBarText === '' ? allShows : filterShows
     return { dataToShow, showSearchBar, page, searchBarText };
 }
 
 
-export default connect(mapStateToProps, { fetchShows, onSearchIconClick, initPageNumber })(MainScreen);
+export default connect(mapStateToProps, { fetchAllShows, onSearchIconClick,
+     initPageNumber })(MainScreen);

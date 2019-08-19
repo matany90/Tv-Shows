@@ -2,6 +2,7 @@ import React from 'react';
 import { Image, ScrollView, StyleSheet } from 'react-native';
 import { View, Card, CardItem, Separator, Text, Body } from 'native-base';
 import { deleteHTMLTags, HttpsStringFormat } from '../Utils';
+import _ from 'lodash'
 import SCREEN_IMPORT from 'Dimensions'
 
 import RatingStarts from '../components/RatingStarts';
@@ -41,7 +42,11 @@ const ShowScreen = (props) => {
                 </Separator>
                 <CardItem>
                     <Body style={styles.genreText}>
-                        {genres.map(genre => <View key={genre}><Text>{genre}</Text></View>)}
+                    <View>
+                        {_.isEmpty(genres) ? <Text>No genre avaliable</Text> : null}
+                    </View>    
+                        {genres.map(genre => 
+                        <View key={genre}><Text>{genre}</Text></View>)}
                     </Body>
                 </CardItem>
                 <Separator bordered>

@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { View, ActivityIndicator, StyleSheet } from 'react-native';
-import { fetchShows, initPageNumber } from '../actions'
+import { fetchAllShows, initPageNumber } from '../actions'
 import _ from 'lodash';
 
 class LoadingScreen extends Component {
     componentDidMount() {
         this.props.initPageNumber();
-        this.props.fetchShows();  
+        this.props.fetchAllShows();  
     }
 
     render() {
-        const { showsArray, navigation } = this.props;
-        if (_.isEmpty(showsArray)) {
+        const { allShows, navigation } = this.props;
+        if (_.isEmpty(allShows)) {
             return(
                 <View style={[styles.container, styles.horizontal]}>
                 <ActivityIndicator size="large" color="#0000ff" />
@@ -35,10 +35,10 @@ const styles = StyleSheet.create({
     }
   })
 
-const mapStateToProps = ({ shows }) => {
-    const { showsArray } = shows;
+const mapStateToProps = ({ data }) => {
+    const { allShows } = data;
     
-    return { showsArray }
+    return { allShows }
 }
 
-export default connect(mapStateToProps, { fetchShows, initPageNumber })(LoadingScreen);
+export default connect(mapStateToProps, { fetchAllShows, initPageNumber })(LoadingScreen);
