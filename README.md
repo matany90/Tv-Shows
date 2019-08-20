@@ -2,13 +2,13 @@
 
 ## Cross-platform mobile application I developed in React-native
 
-The app shows data on TV shows around the world and presents them to the user.
+The app presents information about TV shows around the world to the user.
 The user can search for their favorite program by name 
 
 Technologies I used:
 - React-Native
 - Redux
-- TV-Maze third-party API
+- TV-Maze third-party
 
 ### Main Screen - All Shows:
 <img src="https://i.imgur.com/3unRJPE.jpg" width="400">
