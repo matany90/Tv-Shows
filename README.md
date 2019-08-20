@@ -3,7 +3,7 @@
 ## Cross-platform mobile application I developed in React-native
 
 The app presents information about TV shows around the world.
-The user can search for their favorite program by name 
+The user can search for their favorite show by name 
 
 Technologies I used:
 - React-Native
