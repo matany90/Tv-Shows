@@ -1,4 +1,4 @@
-# TvShows
+# Tv Shows
 
 ## Cross-platform mobile application I developed in React-native
 
@@ -11,12 +11,12 @@ Technologies I used:
 - TV-Maze third-party API
 
 ### Main Screen - All Shows:
-<img src="https://i.imgur.com/3unRJPE.jpg" width="200">
+<img src="https://i.imgur.com/3unRJPE.jpg" width="400">
 
 ### Show Screen:
-<img src="https://i.imgur.com/R1bPpw8.jpg" width="200">
+<img src="https://i.imgur.com/R1bPpw8.jpg" width="400">
 
 ### Search:
-<img src="https://i.imgur.com/fP2jEUb.jpg" width="200">
+<img src="https://i.imgur.com/fP2jEUb.jpg" width="400">
 
 
