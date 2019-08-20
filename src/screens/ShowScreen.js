@@ -63,7 +63,7 @@ const ShowScreen = (props) => {
                 </Separator>
                 <CardItem>
                     <Body style={styles.networkText}>
-                        <Text>{network.name + ", " + network.country.name}</Text>
+                        <Text>{network !== null ? network.name + ", " + network.country.name : "No network avaliable"}</Text>
                     </Body>
                 </CardItem>
                 <Separator bordered>
@@ -71,7 +71,7 @@ const ShowScreen = (props) => {
                 </Separator>
                 <CardItem>
                     <Body style={styles.networkText}>
-                        <Text>{language}</Text>
+                        <Text>{language !== null ? language : "No language avaliable"}</Text>
                     </Body>
                 </CardItem>
             </Card>
