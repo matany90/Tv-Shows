@@ -10,18 +10,13 @@ Technologies I used:
 - Redux
 - TV-Maze third-party API
 
-### Categories List:
-<img src="https://i.imgur.com/3unRJPE.jpg" width="48">
-![alt text](https://imgur.com/mpk2N75.png)
+### Main Screen - All Shows:
+<img src="https://i.imgur.com/3unRJPE.jpg" width="200">
 
-### Locations List:
-![alt text](https://i.imgur.com/0nLsMqy.png)
+### Show Screen:
+<img src="https://i.imgur.com/R1bPpw8.jpg" width="200">
 
-### Add Location:
-![alt text](https://i.imgur.com/EisPdrF.png)
-
-### View Location:
-![alt text](https://imgur.com/fH8glMW.png)
-
+### Search:
+<img src="https://i.imgur.com/fP2jEUb.jpg" width="200">
 
 
