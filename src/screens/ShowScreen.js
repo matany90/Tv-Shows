@@ -16,7 +16,7 @@ const ShowScreen = (props) => {
         <ScrollView style={{ width: SCREEN_WIDTH }}>
             <Card style={styles.cardContainer}>
                 <CardItem cardBody>
-                    <Image source={image !== null ? { uri: image.original } : require('../res/img/noImage.png')}
+                    <Image source={image !== null ? { uri: HttpsStringFormat(image.original) } : require('../res/img/noImage.png')}
                         style={styles.img} />
                 </CardItem>
                 <CardItem>
