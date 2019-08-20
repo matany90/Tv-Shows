@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { StyleProvider, Header, Left, Body, Right, Button, Icon, Title, Item, Input, View, InputGroup, Text } from 'native-base';
+import { StyleProvider, Header, Left, Body, Right, Button, Icon, Title } from 'native-base';
 import { connect } from 'react-redux';
 import SearchBar from './SearchBar';
-import { onSearchIconClick } from '../actions';
+import { onSearchIconClick, clearFilterData } from '../actions';
 import CustomBackIcon from './CustomBackIcon';
 
 class CustomHeader extends Component {
@@ -37,7 +37,10 @@ class CustomHeader extends Component {
       return null;
     }
     return (
-      <CustomBackIcon onPress={() => onPressBack()} />
+      <CustomBackIcon onPress={() => { 
+        onPressBack()
+         this.props.clearFilterData()
+        }} />
     );
   }
 
@@ -65,4 +68,4 @@ const mapStateToProps = ({ header }) => {
   return { showSearchBar }
 }
 
-export default connect(mapStateToProps, { onSearchIconClick })(CustomHeader);
+export default connect(mapStateToProps, { onSearchIconClick, clearFilterData })(CustomHeader);

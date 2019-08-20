@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, Button, Text, FlatList, StyleSheet } from 'react-native';
+import { View, Button, Text, FlatList, StyleSheet, ActivityIndicator } from 'react-native';
 import { fetchAllShows, onSearchIconClick, initPageNumber } from '../actions';
 import { Content, List, ListItem } from 'native-base';
-import {HttpsStringFormat} from '../Utils';
+import { HttpsStringFormat } from '../Utils';
 import _ from 'lodash'
 
 import CustomCard from '../components/CustomCard'
@@ -12,6 +12,9 @@ import CustomHeader from '../components/CustomHeader'
 class MainScreen extends Component {
     renderShows = () => {
         const { dataToShow, navigation, showSearchBar } = this.props;
+        if (_.isEmpty(dataToShow)) {
+            return <ActivityIndicator size="large" color="#0000ff" />
+        }
         return (
             <FlatList
             data={dataToShow}
