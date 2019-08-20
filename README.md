@@ -8,7 +8,7 @@ The user can search for their favorite show by name
 Technologies I used:
 - React-Native
 - Redux
-- TV-Maze third-party
+- TV-Maze third-party API
 
 ### Main Screen - All Shows:
 <img src="https://i.imgur.com/3unRJPE.jpg" width="400">
