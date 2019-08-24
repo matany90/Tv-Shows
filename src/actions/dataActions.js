@@ -6,7 +6,7 @@ let PAGE = 0
 export const fetchAllShows = () => async dispatch => {
     const res = await axios.get(`https://api.tvmaze.com/shows?page=${PAGE}`);
     PAGE = PAGE + 1
-
+    
     dispatch({ type: FETCH_SHOWS, payload: res.data });
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native'
 import { Rating } from 'react-native-elements';
-import { Body, Text, View } from 'native-base';
+import { Text, View } from 'native-base';
 
 
 const RatingStarts = ({ startSize, numberOfStarts, rating, textSize, style }) => (
