@@ -6,3 +6,4 @@ export const INIT_PAGE_NUMBER = 'INIT_PAGE_NUMBER'
 export const CLEAR_FILTER_DATA = 'CLEAR_FILTER_DATA'
 
 
+

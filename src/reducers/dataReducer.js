@@ -1,6 +1,6 @@
 import { FETCH_SHOWS, FETCH_FILTER_SHOWS, INIT_PAGE_NUMBER, CLEAR_FILTER_DATA } from '../actions/types';
 
-const INITIAL_STATE = { allShows: [], filterShows: [] }
+const INITIAL_STATE = { allShows: [], filterShows: [], waitingComponent: null  }
 export default (state = INITIAL_STATE, action) => {
     switch(action.type) {
         case FETCH_SHOWS:
@@ -10,7 +10,7 @@ export default (state = INITIAL_STATE, action) => {
         case INIT_PAGE_NUMBER:
             return { ...state }   
         case CLEAR_FILTER_DATA:
-            return { ...state, filterShows: action.payload }     
+            return { ...state, filterShows: action.payload }       
         default:
          return state;
     }
