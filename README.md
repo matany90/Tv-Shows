@@ -20,5 +20,5 @@ Technologies I used:
 <img src="https://i.imgur.com/fP2jEUb.jpg" width="400">
 
 
-<img src="https://raw.githubusercontent.com/ronykoch/Karantina/main/karantina_img.png" width="400">
+<img src="https://raw.githubusercontent.com/ronykoch/Karantina/main/karantina_img.png" width="900">
 
